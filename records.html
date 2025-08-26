@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Learning Records</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="image/icon.png">
+    <style>
+        body { background-color: #f8f9fa; }
+        .main{
+            width:10%; border-radius: 10px; margin-bottom: 30px;
+        }
+        @media (max-width: 992px) {
+
+    .main {
+        width: 20%; 
+        font-size: 14px; 
+        margin-bottom: 20px; 
+    }
+    .nav-link:hover{
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+    </style>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+        <a class="navbar-brand" href="#"><strong>My Records</strong></a>
+        <div class="navbar-nav">
+            <a id="courses-link" class="nav-link active-nav" onclick="showSection('courses')">Courses</a>
+            <a id="certificates-link" class="nav-link" onclick="showSection('certificates')">Certificates</a>
+            <a id="degrees-link" class="nav-link" onclick="showSection('degrees')">Degrees</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container py-5">
+    <!-- Courses Section -->
+    <div id="courses" class="section active-section">
+        <h2 class="mb-4">My Courses</h2>
+        <div class="row" id="courses-container"></div>
+    </div>
+
+    <!-- Certificates Section -->
+    <div id="certificates" class="section">
+        <h2 class="mb-4" >My Certificates</h2>
+        <div class="row p-3" id="certificates-container"></div>
+    </div>
+
+    <!-- Degrees Section -->
+    <div id="degrees" class="section">
+        <h2 class="mb-4">My Degrees</h2>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="degrees-container"></div>
+    </div>
+</div>
+<section class="Footer">
+    <a class="mx-auto d-block btn btn-primary main"  href="mainpage.html">Home Page</a>
+</section>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        loadCourses();
+    });
+
+    function loadCourses() {
+        let x = localStorage.getItem("pur_item");
+        if (x !== "0" && x!==null) {
+            let coursesContainer = document.getElementById("courses-container");
+            coursesContainer.innerHTML = "";
+            for (var i = 1; i <= x; i++) {
+                let a = "purchased" + i;
+                let b = "price" + i;
+                var k = localStorage.getItem(a);
+                var l = localStorage.getItem(b);
+                coursesContainer.innerHTML += `
+                    <div class="col-lg-4 col-md-6 col-12 mb-4">
+                        <div class="card record-card" style="height:100%;">
+                            <img src="image/all.png" class="card-img-top" alt="Course Image" style="padding:10px">
+                            <div class="card-body">
+                                <h5 class="card-title">${k}</h5>
+                                <p class="text-muted">${l}</p>
+                                <a class="badge bg-primary p-3" style="text-decoration:none" href="${a}.html">Executive Education</a>
+                            </div>
+                        </div>
+                    </div>`;
+            }
+        }
+        else{
+            let coursesContainer = document.getElementById("courses-container");
+            coursesContainer.innerHTML = "";
+            coursesContainer.innerHTML+=`<h3 class="text-center">Enrolled in Any Course First</h3>`;
+        }
+    }
+
+    function showSection(sectionId) {
+        // none the style of all classes and then on id name we decide which one has called
+        var sections = document.getElementsByClassName("section");
+        for (var i = 0; i < sections.length; i++) {
+            sections[i].style.display = "none";
+        }
+
+        document.getElementById(sectionId).style.display = "block";
+        if(sectionId==="certificates"){
+            loadCertificates();
+        }
+        if(sectionId==="degrees"){
+            loadDegrees();
+        }
+
+    }
+    function loadCertificates() {
+        const container = document.getElementById('certificates-container');
+        container.innerHTML = ''; // Clear previous content
+        const purItem = localStorage.getItem('pur_item') || 0;
+        let hasCertificates = false;
+
+        for (let i = 1; i <= purItem; i++) {
+            const testKey = `test${i}`;
+            const courseKey = `purchased${i}`;
+            let full=localStorage.getItem("DegreeYear"+i)
+            if (localStorage.getItem(testKey)) {
+                hasCertificates = true;
+                const courseName = localStorage.getItem(courseKey);
+                const name=localStorage.getItem("userName").toUpperCase()
+
+                container.innerHTML += `
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
+        <div class="card certificate-card text-center shadow-lg rounded-4 border-0" style="background: linear-gradient(135deg, #f8f9fa, #e9ecef); padding: 0px; position: relative; overflow: hidden;">
+        <!-- Ribbon Effect -->
+        <div style="position: absolute; top: 10px; left: -40px; background: gold; color: black; padding: 8px 40px; transform: rotate(-45deg); font-weight: bold;">
+            Certified
+        </div>
+
+        <img src="image/all.png" class="card-img-top mx-auto d-block" alt="Certificate Image" style="padding: 10px; width: 80px;">
+        
+        <h3 class="certificate-title fw-bold text-primary" style="margin-top: 10px; font-size: 22px;">Certificate of Excellence</h3>
+        
+        <p class="certificate-text" style="font-size: 16px; color: #555;">This is proudly presented to</p>
+        
+        <h4 class="fw-bold text-dark" style="font-size: 24px; text-transform: uppercase;">${name}</h4>
+        
+        <p class="certificate-text" style="font-size: 16px; color: #555;">for successfully completing the</p>
+        
+        <h5 class="fw-bold text-success" style="font-size: 20px;">${courseName}</h5>
+        
+        <p class="certificate-footer" style="color: #777; font-style: italic;">Awarded by <span class="fw-bold text-dark">Oxford University</span></p>
+        
+        <!-- Signature & Date -->
+        <div class="d-flex justify-content-between mt-3" style="font-size: 14px; color: #555;">
+            <div>
+                <span class="fw-bold">Prof. John Smith</span><br>
+                <span>Head of Department</span>
+            </div>
+            <div>
+                <span class="fw-bold">${full}</span><br>
+                <span>Date of Completion</span>
+            </div>
+        </div>
+
+        <!-- Decorative Border -->
+    </div>
+</div> `
+            }
+        }
+
+        if (!hasCertificates) {
+            container.innerHTML = `<h3 class="text-center">No Certificates Earned Yet</h3>`;
+        }
+    }
+
+    function loadDegrees() {
+    let degreeCount = localStorage.getItem("degrees"); // Store total degrees earned
+    let degreesContainer = document.getElementById("degrees-container");
+    let x = parseInt(localStorage.getItem("pur_item"), 10) || 0; // Ensure x is a number
+    let check = true;
+    degreesContainer.innerHTML = "";
+    let name = localStorage.getItem("userName") ? localStorage.getItem("userName").toUpperCase() : "";
+
+    for (var i = 1; i <= x; i++) {
+        let certify = localStorage.getItem("certificate" + i);
+        let year = localStorage.getItem("DegreeYear" + i);
+        if (certify !== null) {
+            check = false;
+            degreesContainer.innerHTML += `
+    <div class="col-lg-4 col-md-6 col-12 mb-4">
+        <div class="card degree-card text-center shadow-lg border-0 rounded-4 overflow-hidden" 
+            style="height: 100%; background: #ffffff; border-left: 5px solid #0d6efd; transition: transform 0.3s ease-in-out;">
+            <div class="card-body p-4">
+                <h5 class="card-title fw-bold text-dark mb-2">${certify}</h5>
+                <p class="text-muted mb-1 fs-6">Recipient:</p>
+                <p class="text-dark fw-semibold fs-5">Mr .${name}</p>
+                <p class="text-muted fs-6 mb-2">Year of Completion: <span class="fw-bold">${year}</span></p>
+                <span class="badge bg-primary p-2 px-3 rounded-pill">Certified Degree</span>
+            </div>
+        </div>
+    </div>`;
+        }
+    }
+    if (check) {
+        degreesContainer.innerHTML = `<h3 class="text-center">No Degrees Earned Yet</h3>`;
+    }
+}
+
+
+</script>
+
+</body>
+</html>

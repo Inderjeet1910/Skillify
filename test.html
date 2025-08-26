@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Exam - Oxford University</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="image/icon.png">
+    <style>
+        body { background-color: #f8f9fa; }
+        .container { max-width: 800px; margin-top: 50px; }
+        .question-box { background: white; padding: 15px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); margin-bottom: 15px; }
+        button:hover { transform: scale(1.05); transition: 0.3s; }
+        #back{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center">AI Exam - Oxford University</h2>
+        <form id="examForm" onsubmit="return submitExam()">
+            <div id="questions"></div>
+            <button type="submit" class="btn btn-primary mt-3 mx-auto d-block" style="width: 150px;">Submit Exam</button>
+        </form>
+        <div id="result" class="mt-4 text-center"></div>
+        <a id="back" class="btn btn-primary mx-auto my-5" style="width: 150px;" href="records.html">Record Page</a>
+    </div>
+
+    <script>
+       const questions = [
+    { q: "What is AI?", options: ["Artificial Intelligence", "Automated Input", "Advanced Internet"], answer: "Artificial Intelligence" },
+    { q: "Which programming language is popular for AI?", options: ["Python", "HTML", "CSS"], answer: "Python" },
+    { q: "Who is known as the father of AI?", options: ["Alan Turing", "Elon Musk", "Bill Gates"], answer: "Alan Turing" },
+    { q: "Which of these is an AI application?", options: ["ChatGPT", "Excel", "PowerPoint"], answer: "ChatGPT" },
+    { q: "Which is a type of AI learning?", options: ["Supervised", "Manual", "Random"], answer: "Supervised" },
+    { q: "What is a neural network?", options: ["A biological term", "A machine learning model", "A web server"], answer: "A machine learning model" },
+    { q: "What does NLP stand for?", options: ["Neural Language Processing", "Natural Language Processing", "Native Learning Program"], answer: "Natural Language Processing" },
+    { q: "Which company developed GPT models?", options: ["OpenAI", "Google", "Microsoft"], answer: "OpenAI" },
+    { q: "What is Machine Learning?", options: ["A subset of AI", "A type of hardware", "A software tool"], answer: "A subset of AI" },
+    { q: "Which AI technique is used for decision making?", options: ["Expert Systems", "CSS", "HTML"], answer: "Expert Systems" },
+
+    // Advanced AI Questions
+    // { q: "Which AI algorithm is commonly used for pattern recognition?", options: ["K-Means Clustering", "Random Forest", "Neural Networks"], answer: "Neural Networks" },
+    // { q: "Which of the following is NOT a type of Machine Learning?", options: ["Supervised Learning", "Unsupervised Learning", "Unmonitored Learning"], answer: "Unmonitored Learning" },
+    // { q: "What does Reinforcement Learning primarily use to train models?", options: ["Labeled Data", "Trial and Error", "Feature Engineering"], answer: "Trial and Error" },
+    // { q: "Which function is used as an activation function in Deep Learning?", options: ["ReLU", "Kernel", "Transformer"], answer: "ReLU" },
+    // { q: "Which AI field deals with decision-making and game-playing?", options: ["Computer Vision", "Reinforcement Learning", "Data Mining"], answer: "Reinforcement Learning" },
+    // { q: "Which deep learning architecture is most commonly used for image recognition?", options: ["CNN", "RNN", "LSTM"], answer: "CNN" },
+    // { q: "What does the term 'overfitting' refer to in AI?", options: ["Model learns noise instead of patterns", "Model underperforms", "Model has too few parameters"], answer: "Model learns noise instead of patterns" },
+    // { q: "What is the primary challenge in Natural Language Processing?", options: ["Computational Speed", "Ambiguity in Language", "Hardware Limitations"], answer: "Ambiguity in Language" },
+    // { q: "Which model architecture powers modern AI chatbots like ChatGPT?", options: ["Transformer", "Bayesian Network", "K-Nearest Neighbors"], answer: "Transformer" },
+    // { q: "Which AI concept involves generating new data based on learned patterns?", options: ["Generative AI", "Descriptive AI", "Predictive AI"], answer: "Generative AI" }
+];
+
+
+        function loadQuestions() {
+            let questionContainer = document.getElementById("questions");
+            let questionHTML = "";
+            for (let i = 0; i < questions.length; i++) {
+                questionHTML += `<div class='question-box'>
+                    <p><strong>${i + 1}. ${questions[i].q}</strong></p>`;
+                for (let j = 0; j < questions[i].options.length; j++) {
+                    questionHTML += `<div class='form-check'>
+                        <input class='form-check-input' type='radio' name='q${i}' value='${questions[i].options[j]}'>
+                        <label class='form-check-label'>${questions[i].options[j]}</label>
+                    </div>`;
+                }
+                questionHTML += "</div>";
+            }
+            questionContainer.innerHTML = questionHTML;
+        }
+
+    function submitExam() {
+    let score = 0;
+    let unanswered = 0;
+
+    for (let i = 0; i < questions.length; i++) {
+        let options = document.getElementsByName(`q${i}`);
+        let selected = false;
+        
+        for (let j = 0; j < options.length; j++) {
+            if (options[j].checked) {
+                selected = true;
+                if (options[j].value === questions[i].answer) {
+                    score++;
+                }
+            }
+        }
+
+        if (!selected) {
+            unanswered++;
+        }
+    }
+
+    let resultDiv = document.getElementById("result");
+    if (unanswered > 0) {
+        resultDiv.innerHTML = `<div class='alert alert-warning'>Please answer all questions!</div>`;
+    } else {
+        let percentage = (score / questions.length) * 100;
+        let message = percentage >= 70 ? 'Congratulations! You passed!' : 'Better luck next time!';
+        localStorage.setItem("test1",percentage+"%")
+        resultDiv.innerHTML = `<div class='alert alert-info'>Score: ${score}/10 (${percentage}%)<br>${message}</div>`;
+        document.getElementById("back").style.display="block"
+        
+        let v=localStorage.getItem("pur_item");
+        for(var i=1;i<=v;i++){
+            var a=localStorage.getItem("purchased"+i)
+            if(a==="Oxford Artificial Intelligence Programme"){
+                localStorage.setItem("certificate"+i,"Oxford Artificial Intelligence Programme")
+                const d=new Date();
+                const date=d.getDate()
+                const month=d.getMonth()+1
+                const year=d.getFullYear()
+                const full=date+"/"+month+"/"+year;
+                localStorage.setItem("DegreeYear"+i,full)
+            }
+        }
+    }
+    return false;
+}
+
+        loadQuestions();
+    </script>
+</body>
+</html>

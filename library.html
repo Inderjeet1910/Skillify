@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skillify - Educational Library</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="icon" type="image/png" href="image/icon.png">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .card img {
+            height: 200px;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .card:hover img {
+            transform: scale(1.1);
+            transition: transform 0.5s;
+        }
+        .navbar {
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-nav .nav-link {
+            font-weight: bold;
+            color: #333 !important;
+        }
+        .footer {
+            background-color: whitesmoke;
+            color: black;
+            padding: 50px 0;
+        }
+        .nav-item:hover .nav-link{
+            background-color: black;
+            color: white !important;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-flex" id="navbarNav">
+                <ul class="navbar-nav justify-content-center">
+                    <li class="nav-item fw-bold"><a class="nav-link" href="#books">Books</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#videos">Videos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#articles">Articles</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container my-5">
+        <pre class="text-center fw-bold py-5" style="font-size: x-large;">   Explore a variety of educational 
+resources including books, videos, and articles.</pre>
+    </div>
+    
+    <div class="container">
+        <h3 id="books" class="text-center my-4">Books</h3>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="image/cm.png" class="card-img-top" alt="Computer Science">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Computer Science</h5>
+                        <p class="card-text">Learn programming and algorithms.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="image/math.png" class="card-img-top" alt="Mathematics">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Mathematics</h5>
+                        <p class="card-text">Explore advanced math concepts.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="image/pyh.png" class="card-img-top" alt="Physics">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Physics</h5>
+                        <p class="card-text">Understand the laws of nature.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary d-block mx-auto mt-3">Show More</button>
+        
+        <h3 id="videos" class="text-center my-4">Video Tutorials</h3>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <iframe class="card-img-top" width="100%" height="200" src="https://www.youtube.com/embed/C6YtPJxNULA" frameborder="0" allowfullscreen></iframe>
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Programming Basics</h5>
+                        <p class="card-text">Step-by-step coding tutorials.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <iframe class="card-img-top" width="100%" height="200" src="https://www.youtube.com/embed/ua-CiDNNj30" frameborder="0" allowfullscreen></iframe>
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Data Science</h5>
+                        <p class="card-text">Machine learning and analytics.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <iframe class="card-img-top" width="100%" height="200" src="https://www.youtube.com/embed/aircAruvnKk" frameborder="0" allowfullscreen></iframe>
+                    <div class="card-body text-center">
+                        <h5 class="card-title">AI & ML</h5>
+                        <p class="card-text">Artificial Intelligence and Machine Learning.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <button class="btn btn-primary d-block mx-auto mt-3">Show More</button>
+        
+        <h3 id="articles" class="text-center my-4">Articles</h3>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="image/tech.png" class="card-img-top" alt="Technology Trends">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Technology Trends</h5>
+                        <p class="card-text">Latest updates in tech.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="image/fi.png" class="card-img-top" alt="Finance">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Finance</h5>
+                        <p class="card-text">Investment and money management tips.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="image/health.png" class="card-img-top" alt="Health & Wellness">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Health & Wellness</h5>
+                        <p class="card-text">Tips for a healthy lifestyle.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary d-block mx-auto my-3">Show More</button>
+    </div>
+    
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h4>Skillify</h4>
+                    <p>Empowering learners through quality education</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h4>Contact</h4>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-envelope me-2"></i>contact@skillify.com</li>
+                        <li><i class="fas fa-phone me-2"></i>+1 234 567 890</li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" class="text-dark me-3"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-dark me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-dark me-3"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

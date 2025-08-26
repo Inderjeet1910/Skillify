@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Course</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.1/sql-wasm.js"></script>
+    <script src="script.js"></script>
+    <link rel="icon" type="image/png" href="image/icon.png">
+
+</head>
+<body style="background: linear-gradient(to right, whitesmoke,white);">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#" style="font-size: 30px;">Courses</a>
+        </div>
+    </nav>
+    <div class="container">     
+        <div id="sections-container"></div>
+    </div>
+    <div class="d-flex flex-column foot">
+        <footer class="text-center my-3">
+            © 2025 Skillify Inc. All rights reserved.
+        </footer>
+        <a class="btn btn-primary mx-auto d-block my-3" href="mainpage.html" style="width: 150px;">Main-Page</a>
+    </div>
+
+
+        <script>
+       var courseCategories = [
+    {
+        category: "AI & Digital Transformation",
+        courses: [
+            { img: "image/1.png", title: "Artificial Intelligence: Implications for Business Strategy", school: "MIT Sloan School of Management", price: "$2,800" },
+            { img: "image/ai2.png", title: "Oxford Artificial Intelligence Programme", school: "Oxford Saïd", price: "$3,200" },
+            { img: "image/ai3.png", title: "Artificial Intelligence in Health Care", school: "MIT Sloan School of Management", price: "$2,500" },
+            { img: "image/ai4.png", title: "Deepak Chopra: Soul of Leadership and Wellbeing", school: "ChopraX", price: "$1,800" },
+            { img: "image/ai5.png", title: "AI for Business Leaders", school: "Harvard Business School", price: "$3,500" },
+            { img: "image/ai6.png", title: "The Future of AI and Robotics", school: "Stanford University", price: "$3,000" },
+            { img: "image/ai7.png", title: "AI in Cybersecurity", school: "UC Berkeley", price: "$2,900" },
+            { img: "image/ai8.png", title: "AI in Finance and Investment", school: "Wharton Business School", price: "$2,700" }
+        ]
+    },
+    {
+        category: "Business & Strategy",
+        courses: [
+            { img: "image/bu1.png", title: "Strategic Thinking for Competitive Advantage", school: "Harvard Business School", price: "$3,000" },
+            { img: "image/bu2.png", title: "Innovation and Business Transformation", school: "MIT Sloan", price: "$2,900" },
+            { img: "image/bu3.png", title: "The Essentials of Business Strategy", school: "Wharton", price: "$2,700" },
+            { img: "image/bu4.png", title: "Leadership and Strategy Execution", school: "Stanford GSB", price: "$3,100" },
+            { img: "image/bu5.png", title: "Corporate Strategy", school: "London Business School", price: "$2,600" },
+            { img: "image/bu6.png", title: "Entrepreneurship", school: "Kellogg School", price: "$2,400" },
+            { img: "image/bu8.png", title: "Marketing Strategy For Hotel", school: "Columbia", price: "$2,500" },
+            { img: "image/bu7.png", title: "Leadership Change", school: "Yale SOM", price: "$2,800" }
+        ]
+    },
+    {
+        category: "Law & Legal Studies",
+        courses: [
+            { img: "image/law1.png", title: "Corporate Law & Governance", school: "Harvard Law School", price: "$3,200" },
+            { img: "image/law2.png", title: "International Human Rights Law", school: "Oxford University", price: "$2,800" },
+            { img: "image/law3.png", title: "Intellectual Property Law", school: "Stanford Law School", price: "$3,000" },
+            { img: "image/law4.png", title: "Criminal Law & Justice", school: "Yale Law School", price: "$2,700" },
+            { img: "image/law5.png", title: "Cyber Law & Digital Privacy", school: "University of Toronto", price: "$2,500" },
+            { img: "image/law6.png", title: "Environmental Law & Policy", school: "Cambridge University", price: "$2,900" }
+        ]
+    },
+    {
+        category: "Medical & Healthcare",
+        courses: [
+            { img: "image/law1.png", title: "Fundamentals of Public Health", school: "Johns Hopkins University", price: "$2,500" },
+            { img: "image/bui.png", title: "Medical Neuroscience", school: "Duke University", price: "$2,800" },
+            { img: "image/bui.png", title: "Global Health & Pandemics", school: "Harvard Medical School", price: "$3,100" },
+            { img: "image/bui.png", title: "Biomedical Research & Innovation", school: "Stanford Medical School", price: "$2,900" },
+            { img: "image/bui.png", title: "Emergency Medicine & Trauma Care", school: "Mayo Clinic", price: "$2,700" },
+            { img: "image/bui.png", title: "Advancements in Surgery", school: "Cleveland Clinic", price: "$3,200" }
+        ]
+    },
+    {
+        category: "Engineering & Technology",
+        courses: [
+            { img: "image/cm.png", title: "Artificial Intelligence & Machine Learning", school: "MIT", price: "$3,500" },
+            { img: "image/cm.png", title: "Structural Engineering & Design", school: "Stanford University", price: "$2,900" },
+            { img: "image/cm.png", title: "Renewable Energy Technologies", school: "Imperial College London", price: "$3,000" },
+            { img: "image/cm.png", title: "Robotics & Automation", school: "Carnegie Mellon University", price: "$3,100" },
+            { img: "image/cm.png", title: "Electrical & Electronics Engineering", school: "UC Berkeley", price: "$2,800" },
+            { img: "image/cm.png", title: "Software Engineering & Cloud Computing", school: "University of Washington", price: "$2,700" }
+        ]
+    }
+];
+
+        
+        var sectionsContainer = document.getElementById("sections-container");
+        
+        function createSections() {
+        var sectionsHTML = "";
+        for (var i = 0; i < courseCategories.length; i++) {
+         var sectionId = "section_" + i;
+        
+         sectionsHTML += `
+             <div class="main px-5">
+                 <h2 class="mt-4 mb-5">${courseCategories[i].category}</h2>
+                 <div class="row" id="cards-${sectionId}"></div>
+                 <div class="text-center mt-4">
+                     <button class="btn btn-primary mx-auto inline my-2" id="btn-more-${sectionId}" onclick="showMore(${i})">Show More</button>
+                     <button class="btn btn-secondary mx-auto inline my-2" id="btn-less-${sectionId}" onclick="showLess(${i})" style="display:none;">Show Less</button>
+                 </div>
+             </div>
+         `;
+           }
+        sectionsContainer.innerHTML = sectionsHTML;
+        
+        }
+        
+        function makeCards(sectionIndex, limit) {
+        var sectionId = "section_" + sectionIndex;
+        var container = document.getElementById("cards-" + sectionId);
+        var courses = courseCategories[sectionIndex].courses;
+        var cardsHTML = "";
+        
+        for (var k = 0; k < limit && k < courses.length; k++) {
+        var name = sectionId + "_" + k;
+        var selected = courses[k].title;
+        var pay=courses[k].price
+        cardsHTML += `
+        <div class="col-lg-4 col-md-6 col-12 mb-4">
+            <div class="card2" style="height:100%;">
+                <img src="${courses[k].img}" class="card-img-top" alt="Course Image">
+                <div class="card-body">
+                    <h5 class="card-title">${courses[k].title}</h5>
+                    <p class="text-muted">${courses[k].school}</p>
+                    <span class="course-badge" onclick="${name}('${selected}','${pay}')">Executive Education</span>
+                </div>
+            </div>
+        </div>
+        `;
+        }
+        
+        
+        container.innerHTML = cardsHTML;
+        }
+        
+        function showMore(index) {
+        var sectionId = "section_" + index;
+        makeCards(index, courseCategories[index].courses.length);
+        
+        document.getElementById("btn-more-" + sectionId).style.display = "none";
+        document.getElementById("btn-less-" + sectionId).style.display = "block";
+        }
+        
+        function showLess(index) {
+        var sectionId = "section_" + index;
+        makeCards(index, 4);
+        
+        document.getElementById("btn-more-" + sectionId).style.display = "block";
+        document.getElementById("btn-less-" + sectionId).style.display = "none";
+        }
+        
+        // Initialize
+        createSections();
+        for (var i = 0; i < courseCategories.length; i++) {
+        makeCards(i, 4);
+        }
+        
+        function section_0_1(title,pay){
+            localStorage.setItem("selected_course",title);
+            localStorage.setItem("price",pay);
+            window.open("AI.html","_self");
+        }
+        </script>
+   </body>
+</html>

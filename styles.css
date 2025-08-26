@@ -1,0 +1,599 @@
+/* main page */
+.skill {
+    font-size:xx-large;
+    font-weight: bolder;
+    text-decoration: none;
+}
+.tool {
+    position: relative;
+}
+.text {
+    visibility: hidden;
+    position: absolute;
+    background-color: whitesmoke;
+    color: black;
+    top: 39px;
+    left: -105px;
+    width: 300px;
+    height: 390px;
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+    z-index: 100;
+}
+.tool:hover .text{
+    visibility: visible;
+}
+
+@media (max-width: 620px) {
+    .text {
+        top: 39px;
+        bottom: -1px;
+        left: 0;
+        width: calc(100% - 1px);
+        height: 200px;
+    }
+    .tool {
+        width: 100%;
+    }
+}
+@media (max-width:625px){
+    .skill{
+        font-size: 16px;
+    }
+}
+.inner{
+    color: black;
+    text-align: left;
+    text-decoration: none;
+    transition: 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+.inner:hover{
+    background-color: black;
+    color: white;
+    padding: 10px;
+}
+.btninner{
+    width: 120px;
+    padding: 2px;
+}
+.btninner:hover{
+    padding-left: 10px;
+    transition: 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+.center-image{
+    margin: 25px;
+}
+
+.mid{
+    text-align: center;
+}
+
+.mid-text{
+    text-align: center;
+    font-size: 12px;
+}
+
+
+.course-btn{
+    width: 150px;
+    border-radius: 15px;
+    margin-top: 10px;
+}
+
+.card-section {
+        display: none;
+    }
+
+@media (max-width:375px){
+    .card{
+        max-width: 200px;
+        margin-top: 10px;
+        min-width: 100px;
+    }
+    .course-btn{
+        width: 130px;
+        padding: 0px;
+    }
+}
+.offer-box{
+    text-align: center;
+    margin-top: 30px;
+}
+
+.lists{
+    list-style-type: none; 
+    margin-top: 30px;
+    text-align: center;
+}
+.inner-list{
+    margin-top: 50px;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050;
+}
+.modal-box {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  width: 100%;
+}
+@media (max-width:400px){
+    .modal-overlay{
+        top: 10px;
+        left: 26px;
+        width: 85%;
+    }
+    .modal-box{
+        width: 85%;
+    }
+    #login3{
+        margin-left: 10px;
+    }
+    #login1{
+        padding: 5px;
+    }
+    #login2{
+        padding: 5px;
+    }
+}
+.profile-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-dropdown button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.profile-dropdown img {
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.profile-dropdown:hover img {
+    transform: scale(1.1); 
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 100;  
+    top: 100%;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s 0.3s;
+}
+
+.profile-dropdown:hover .dropdown-content,
+.profile-dropdown .dropdown-content:hover {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.2s ease, padding-left 0.2s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+    padding-left: 20px; 
+}
+
+.dropdown-content a:active {
+    background-color: #ddd;
+}
+
+#profileSection {
+    display: none; 
+}
+
+/* footer of main page */
+.footer-section {
+    background-color: #ffffff;
+    padding: 50px 0;
+    border-top: 2px solid #ddd;
+}
+
+.footer-title {
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.footer-section p, .footer-section ul {
+    color: #555;
+}
+
+.footer-section ul {
+    padding: 0;
+}
+
+.footer-section ul li {
+    list-style: none;
+    margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #0056b3;
+}
+
+.social-icons a {
+    color: #007bff;
+    font-size: 20px;
+    margin-right: 10px;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: #007bff;
+}
+
+.social{
+    text-decoration: none;
+}
+
+
+
+
+/* courses section */
+.card2 {
+    height: 100%;
+    width: 100%;
+    min-height: 300px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    cursor: pointer;
+}
+
+.card2 img {
+    height: 200px;
+    border-radius: 10px 10px 0 0;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.text-muted {
+    font-size: 1rem;
+}
+
+.course-badge {
+    background: #007bff;
+    color: white;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 10px;
+}
+.card2:hover{
+    transform: scaleY(1.1);
+}
+.foot{
+    background-color: white;
+}
+
+
+
+
+/* Ai courses of oxford  */
+:root {
+    --primary-color: #2A5C84;
+    --secondary-color: #32a8a4;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f8f9fa;
+    position: relative;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    flex-wrap: wrap;
+}
+
+.header img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    max-width: 600px;
+}
+
+.nav-bar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 0.8rem 0;
+    z-index: 1000;
+}
+
+.nav-link {
+    color: black;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.nav-link:hover, .nav-link.active {
+    background: black;
+    color: white !important;
+    border-radius: 5px;
+}
+
+.program-section {
+    background: white;
+    border-radius: 10px;
+    padding: 2rem;
+    margin: 1rem 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .header img {
+        max-width: 100%;
+        margin-top: 1rem;
+    }
+
+    .program-section {
+        padding: 1rem;
+        margin: 0.5rem 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .header h1 {
+        font-size: 1.5rem;
+    }
+
+    .nav-bar {
+        padding: 0.6rem 0;
+    }
+}
+
+
+
+/* success page */
+.course-info {
+    margin: 15px 0;
+    font-size: 18px;
+    color: #555;
+}
+.back-btn {
+    display: inline-block;
+    padding: 12px 18px;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    margin-top: 15px;
+    transition: 0.3s;
+}
+.back-btn:hover {
+    background: linear-gradient(135deg, #0056b3, #004494);
+    transform: scale(1.05);
+}
+
+
+
+
+/* paymemnt page */
+.payment-container {
+    max-width: 450px;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+.payment-header {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.payment-box {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: left;
+    margin-bottom: 20px;
+}
+.icon {
+    font-size: 40px;
+    margin: 15px 0;
+    color: #333;
+}
+
+
+
+/* career */
+.career-pathway {
+    background: linear-gradient(135deg,#3498db, #2980b9);
+    color: white;
+    border-radius: 15px;
+    transition: transform 0.3s;
+}
+
+.roadmap-step {
+    border-left: 3px solid #4a90e2;
+    padding-left: 2rem;
+    position: relative;
+}
+
+.roadmap-step::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 0;
+    width: 16px;
+    height: 16px;
+    background: #4a90e2;
+    border-radius: 50%;
+}
+
+.tool-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+
+.trend-card {
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 12px;
+}
+
+.trend-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+.progress-bar {
+    border-radius: 4px;
+}
+
+.skill-requirements li {
+    padding: 2px 0;
+ }
+
+
+ /* about */
+ .hero-section {
+    background: linear-gradient(135deg, #3498db,#2980b9);
+    /* background-color: blue; */
+    color: black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 80px 0;
+}
+
+.content-section {
+    padding: 60px 0;
+}
+
+.team-member img {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+}
+
+
+/* records */
+.record-card { transition: transform 0.3s; margin-bottom: 20px; }
+        .record-card:hover { transform: translateY(-5px); }
+        .nav-link { cursor: pointer; }
+        .section { display: none; }
+        .active-section { display: block; } 
+
+
+
+/* degree */
+.categories {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+.category, .more-degrees {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border-top: 4px solid #2c3e50;
+}
+.category h2, .more-degrees h2 {
+    color: #2c3e50;
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+.degree-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+.degree-item:hover {
+    background-color: #f8fbff;
+}
+.degree-logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+    object-fit: contain;
+}
+.degree-info {
+    text-align: left;
+    flex: 1;
+}
+.degree-info h3 {
+    color: #34495e;
+    margin: 0;
+}
+.degree-info p {
+    color: #7f8c8d;
+    margin: 0;
+}
+.more-degrees a {
+    display: block;
+    color: #007bff;
+    text-decoration: none;
+    margin-bottom: 15px;
+    transition: color 0.3s ease;
+}
+.more-degrees a:hover {
+    color: #0056b3;
+}

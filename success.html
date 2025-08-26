@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase Successful</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.1/sql-wasm.js"></script>
+    <script src="script.js"></script>
+    <link rel="icon" type="image/png" href="image/icon.png">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f8f9fa, #dbeafe);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            animation: fadeIn 1s ease-in;
+        }
+        .container {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 400px;
+    transform: scale(0.9);
+}
+h1 {
+    color: #28a745;
+}
+.back-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 15px;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.back-btn:hover {
+    background: #0056b3;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Purchase Successful!</h1>
+        <p>Thank you for purchasing the course.</p>
+        <div class="course-info">
+            <h2 id="course-name"></h2>
+            <p id="course-price"></p>
+        </div>
+        <a href="mainpage.html" class="back-btn">Home</a>
+    </div>
+   <script>
+        var x = parseInt(localStorage.getItem("pur_item")) || 0;
+     
+        change();
+        function change() {
+            x += 1;
+            localStorage.setItem("pur_item", x);
+
+            const course = localStorage.getItem("selected_course") || "Unknown Course";
+            const price = localStorage.getItem("price") || "Unknown Price";
+
+            document.getElementById("course-name").innerText = course;
+            document.getElementById("course-price").innerText = "Price: " + price;
+
+            localStorage.setItem("price" + x, document.getElementById("course-price").innerText);
+            localStorage.setItem("purchased" + x, document.getElementById("course-name").innerText);
+
+            localStorage.removeItem("price");
+            localStorage.removeItem("selected_course");
+            localStorage.setItem("enrolled","true");
+        }
+   </script>
+</body>
+</html>
